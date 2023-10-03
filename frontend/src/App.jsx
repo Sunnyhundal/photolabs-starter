@@ -3,6 +3,8 @@ import React from 'react';
 //import PhotoListItem from './components/PhotoListItem';
 
 import TopNavigationBar from './components/TopNavigationBar';
+import HomeRoute from 'routes/HomeRoute';
+import PhotoList from 'components/PhotoList';
 import './App.scss';
 
 // const sampleDataForPhotoListItem = {
@@ -19,12 +21,12 @@ import './App.scss';
 // const photo = new Array(2).fill(sampleDataForPhotoListItem);
 
 // Note: Rendering a single component to build components in isolation
-const App = (props) => {
+const App = () => {
   return (
     <div className="App">
 
 
-    <TopNavigationBar/>
+    <HomeRoute />
 
     
   
