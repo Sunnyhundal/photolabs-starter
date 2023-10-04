@@ -7,9 +7,10 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 
-const PhotoListItem = ({sampleData}) => {
-  const {id, location, urls, user} = sampleData;
-  
+const PhotoListItem = (props) => {
+  const {id, location, urls, user} = props.data;
+  const {showSelected} = props;
+
   return (
     <div className="photo-list-item__item" key = {id}>
       <PhotoFavButton />
@@ -18,6 +19,7 @@ const PhotoListItem = ({sampleData}) => {
           className="photo-list-item__image"
           src={urls.full}
           alt="A photo"
+          onClick={() => showSelected(id)}  
         />
       </div>
       <div className="photo-list-item__user-details">
