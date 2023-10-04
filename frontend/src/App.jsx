@@ -16,7 +16,7 @@ const App = () => {
 
 
     <HomeRoute photos = {photos} topics = {topics} showSelected = {showSelected} />
-    {isModalVisible && <PhotoDetailsModal showSelected = {showSelected} />}
+    {isModalVisible && <PhotoDetailsModal photos = {photos} showSelected = {showSelected} isModalVisible = {isModalVisible}/>}
 
     
   
