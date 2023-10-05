@@ -6,10 +6,10 @@ import PhotoListItem from "./PhotoListItem";
 
 
 const PhotoList = (props) => {
-  const {photos, showSelected} = props;
+  const {photos, showSelected, favPhotos, showFavPhotos} = props;
   return (
     <ul className="photo-list">
-      {photos.map(photo  =>  <PhotoListItem key = {photo.id} data = {photo} showSelected = {showSelected} />)}
+      {photos.map(photo  =>  <PhotoListItem key = {photo.id} data = {photo} showSelected = {showSelected} favPhotos = {favPhotos} showFavPhotos = {showFavPhotos} />)}
     </ul>
   );
 };

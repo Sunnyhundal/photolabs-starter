@@ -8,7 +8,9 @@ import './App.scss';
 const App = () => {
   
   const [isModalVisible, setIsModalVisible] = useState(null);
-  const showSelected = (id) => isModalVisible ? setIsModalVisible(null) : setIsModalVisible(id);
+  const showSelected = (id) => isModalVisible === id ? 
+  setIsModalVisible(null) 
+  : setIsModalVisible(id);
   
   
   return (
