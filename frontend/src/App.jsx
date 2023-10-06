@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useApplicationData from "hooks/useApplicationData";
 import photos from "mocks/photos.js";
 import topics from "mocks/topics.js";
 import HomeRoute from "routes/HomeRoute";
@@ -6,16 +7,13 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import "./App.scss";
 
 const App = () => {
-  const [favPhotos, setFavPhotos] = useState([]);
 
-  const showFavPhotos = (id) =>
-    favPhotos.includes(id)
-      ? setFavPhotos(favPhotos.filter((photo) => photo !== id))
-      : setFavPhotos([...favPhotos, id]);
 
-  const [isModalVisible, setIsModalVisible] = useState(null);
-  const showSelected = (id) =>
-    isModalVisible === id ? setIsModalVisible(null) : setIsModalVisible(id);
+  const { 
+    state: { favPhotos, showFavPhotos, showSelected, isModalVisible } 
+  }= useApplicationData();
+
+
 
   return (
     <div className="App">
