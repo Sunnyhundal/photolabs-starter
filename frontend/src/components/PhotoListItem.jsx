@@ -12,7 +12,6 @@ const PhotoListItem = (props) => {
   const {id, location, urls, user} = props.data;
   const {showSelected} = props;
   const {favPhotos, showFavPhotos} = props
-
   return (
     <div className="photo-list-item__item" key = {id}>
       <PhotoFavButton id={id} favPhotos = {favPhotos} showFavPhotos = {showFavPhotos} />
@@ -31,20 +30,16 @@ const PhotoListItem = (props) => {
               alt="Profile"
            />
          </div>
-        <div className="">
+        
         <div className="photo-list-item__user-info">
-          {user.username}
-        </div>
-
+          {user.name}
+        
         <div className="photo-list-item__user-location">
-          {location.city},{" "}
-          {location.country}
+          {location.city},{" "}{location.country}
         </div>
-
         </div>
-
         </div>
-      </div>
+        </div>
 
     
   );

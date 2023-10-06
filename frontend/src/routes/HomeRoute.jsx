@@ -5,21 +5,23 @@ import "../styles/HomeRoute.scss";
 import TopNavigation from "components/TopNavigationBar";
 import PhotoList from "components/PhotoList";
 
-
 const HomeRoute = (props) => {
-  const {topics, photos} = props
-  const [ favPhotos, setFavPhotos ] = useState([]);
+  const { topics, photos, showSelected, favPhotos, showFavPhotos } = props;
   
-  const showFavPhotos = (id) => favPhotos.includes(id) ? setFavPhotos(favPhotos.filter(photo => photo !== id)) : setFavPhotos([...favPhotos, id]);
-
   const isFavPhotoExist = favPhotos.length > 0;
-  {console.log(favPhotos)}
-
+  {
+    console.log(favPhotos);
+  }
 
   return (
     <div className="home-route">
-       <TopNavigation topics = {topics} isFavPhotoExist = {isFavPhotoExist} />
-       <PhotoList photos = {photos} favPhotos = {favPhotos} showFavPhotos = {showFavPhotos} />
+      <TopNavigation topics={topics} isFavPhotoExist={isFavPhotoExist} />
+      <PhotoList
+        photos={photos}
+        favPhotos={favPhotos}
+        showFavPhotos={showFavPhotos}
+        showSelected={showSelected}
+      />
     </div>
   );
 };
