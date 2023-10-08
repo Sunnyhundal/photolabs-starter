@@ -9,10 +9,9 @@ import "./App.scss";
 const App = () => {
 
 
-  const { 
-    state: { favPhotos, showFavPhotos, showSelected, isModalVisible } 
-  }= useApplicationData();
+  const { state, showFavPhotos, showSelected}= useApplicationData();
 
+  const { favPhotos, isModalVisible } = state;
 
 
   return (
