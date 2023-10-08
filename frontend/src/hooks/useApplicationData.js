@@ -1,12 +1,19 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 
-// Initial state for the reducer
+export const ACTIONS = {
+  SET_PHOTO_DATA: "SET_PHOTO_DATA",
+  SET_TOPIC_DATA: "SET_TOPIC_DATA"
+};
+
+// Define the initial state for the reducer
 const initialState = {
   favPhotos: [],
+  photoData: [],
+  topicData: [],
   isModalVisible: null,
 };
 
-// The reducer for photolabs project
+// Define the reducer function
 const reducer = (state, action) => {
   switch (action.type) {
     case "TOGGLE_FAV":
@@ -26,6 +33,10 @@ const reducer = (state, action) => {
         ...state,
         isModalVisible: state.isModalVisible === action.id ? null : action.id,
       };
+    case "SET_PHOTO_DATA":
+      return { ...state, photoData: action.payload };
+    case "SET_TOPIC_DATA":
+        return { ...state, topicData: action.payload };
     default:
       return state;
   }
@@ -33,6 +44,22 @@ const reducer = (state, action) => {
 
 function useApplicationData() {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    fetch("/api/photos")
+      .then((response) => response.json())
+      .then((data) =>
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+      );
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/topics")
+      .then((response) => response.json())
+      .then((data) =>
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data })
+      );
+  }, []);
 
   const showFavPhotos = (id) => {
     dispatch({ type: "TOGGLE_FAV", id });

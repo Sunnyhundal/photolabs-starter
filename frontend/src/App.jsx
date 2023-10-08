@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import useApplicationData from "hooks/useApplicationData";
-import photos from "mocks/photos.js";
-import topics from "mocks/topics.js";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import "./App.scss";
@@ -11,21 +9,21 @@ const App = () => {
 
   const { state, showFavPhotos, showSelected}= useApplicationData();
 
-  const { favPhotos, isModalVisible } = state;
-
+  const { favPhotos, isModalVisible, photoData, topicData } = state;
 
   return (
     <div className="App">
+      
       <HomeRoute
-        photos={photos}
-        topics={topics}
+        photos={photoData}
+        topics={topicData}
         showSelected={showSelected}
         favPhotos={favPhotos}
         showFavPhotos={showFavPhotos}
       />
       {isModalVisible && (
         <PhotoDetailsModal
-          photos={photos}
+          photos={photoData}
           showSelected={showSelected}
           isModalVisible={isModalVisible}
           favPhotos={favPhotos}
