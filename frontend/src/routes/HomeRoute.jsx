@@ -6,8 +6,15 @@ import TopNavigation from "components/TopNavigationBar";
 import PhotoList from "components/PhotoList";
 
 const HomeRoute = (props) => {
-  const { topics, photos, showSelected, favPhotos, showFavPhotos } = props;
-  
+  const {
+    topics,
+    photos,
+    showSelected,
+    favPhotos,
+    showFavPhotos,
+    photosByTopic,
+  } = props;
+
   const isFavPhotoExist = favPhotos.length > 0;
   {
     console.log(favPhotos);
@@ -15,7 +22,11 @@ const HomeRoute = (props) => {
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} isFavPhotoExist={isFavPhotoExist} />
+      <TopNavigation
+        topics={topics}
+        isFavPhotoExist={isFavPhotoExist}
+        photosByTopic={photosByTopic}
+      />
       <PhotoList
         photos={photos}
         favPhotos={favPhotos}

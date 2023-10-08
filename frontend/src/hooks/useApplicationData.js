@@ -2,7 +2,8 @@ import { useReducer, useEffect } from "react";
 
 export const ACTIONS = {
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
-  SET_TOPIC_DATA: "SET_TOPIC_DATA"
+  SET_TOPIC_DATA: "SET_TOPIC_DATA",
+  GET_PHOTO_BY_TOPIC: "GET_PHOTO_BY_TOPIC",
 };
 
 // Define the initial state for the reducer
@@ -11,6 +12,7 @@ const initialState = {
   photoData: [],
   topicData: [],
   isModalVisible: null,
+  photoTopic: null,
 };
 
 // Define the reducer function
@@ -36,7 +38,10 @@ const reducer = (state, action) => {
     case "SET_PHOTO_DATA":
       return { ...state, photoData: action.payload };
     case "SET_TOPIC_DATA":
-        return { ...state, topicData: action.payload };
+      return { ...state, topicData: action.payload };
+    case "GET_PHOTO_BY_TOPIC":
+      return { ...state, photoTopic: action.payload };
+
     default:
       return state;
   }
@@ -61,6 +66,15 @@ function useApplicationData() {
       );
   }, []);
 
+  useEffect(() => {
+    if (state.photoTopic !== null)
+      fetch(`http://localhost:8001/api/topics/photos/${state.photoTopic}`)
+        .then((response) => response.json())
+        .then((data) =>
+          dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+        );
+  }, [state.photoTopic]);
+
   const showFavPhotos = (id) => {
     dispatch({ type: "TOGGLE_FAV", id });
   };
@@ -68,11 +82,15 @@ function useApplicationData() {
   const showSelected = (id) => {
     dispatch({ type: "TOGGLE_MODAL", id });
   };
+  const photosByTopic = (topic) => {
+    dispatch({ type: ACTIONS.GET_PHOTO_BY_TOPIC, payload: topic });
+  };
 
   return {
     state,
     showFavPhotos,
     showSelected,
+    photosByTopic,
   };
 }
 

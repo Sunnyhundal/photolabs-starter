@@ -5,21 +5,20 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import "./App.scss";
 
 const App = () => {
-
-
-  const { state, showFavPhotos, showSelected}= useApplicationData();
+  const { state, showFavPhotos, showSelected, photosByTopic} =
+    useApplicationData();
 
   const { favPhotos, isModalVisible, photoData, topicData } = state;
 
   return (
     <div className="App">
-      
       <HomeRoute
         photos={photoData}
         topics={topicData}
         showSelected={showSelected}
         favPhotos={favPhotos}
         showFavPhotos={showFavPhotos}
+        photosByTopic={photosByTopic}
       />
       {isModalVisible && (
         <PhotoDetailsModal
@@ -28,6 +27,7 @@ const App = () => {
           isModalVisible={isModalVisible}
           favPhotos={favPhotos}
           showFavPhotos={showFavPhotos}
+          photosByTopic={photosByTopic}
         />
       )}
     </div>
