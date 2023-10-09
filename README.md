@@ -8,11 +8,11 @@ The project is built using ***React, Node.js, Express, and PostgreSQL***.
 ## Screenshots
 
 **Home view:**
-![Home Page](/public/screenshots/home.png)
+![Home Page](frontend/public/screenshots/home.png)
 **Modal view:**
-![modal view](/public/screenshots/modal.png)
+![modal view](frontend/public/screenshots/modal.png)
 **Likes and Notifications:**
-![likes and Notifications](/public/screenshots/likes.png)
+![likes and Notifications](frontend/public/screenshots/likes.png)
 
 
 # Photolabs
