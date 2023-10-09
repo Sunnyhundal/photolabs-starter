@@ -12,8 +12,11 @@ import PhotoList from "components/PhotoList";
 const PhotoDetailsModal = (props) => {
   const { photos, showSelected, isModalVisible, favPhotos, showFavPhotos } =
     props;
+  // Get the id of the photo that is modal-visible
   const modalPhoto = photos.filter((photo) => isModalVisible === photo.id);
+  // Get the photo object from the modal-visible photo id
   const photo = modalPhoto[0];
+  // Get the similar photos from the photo object
   const similarPhotosToModal = Object.values(photo.similar_photos);
 
   return (
@@ -27,7 +30,6 @@ const PhotoDetailsModal = (props) => {
           />
         </button>
       </div>
-
       <div className="photo-details-modal__images">
         <PhotoFavButton
           id={isModalVisible}
@@ -58,6 +60,7 @@ const PhotoDetailsModal = (props) => {
           </div>
         </div>
         <h4>Related Photos</h4>
+
         <PhotoList
           className="photo-details-modal__images"
           photos={similarPhotosToModal}
