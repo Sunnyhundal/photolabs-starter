@@ -18,6 +18,7 @@ const initialState = {
 // Define the reducer function
 const reducer = (state, action) => {
   switch (action.type) {
+    // If the favPhotos array already includes the id of the photo that was clicked on, then filter out that id from the array. If it doesn't include the id, then add it to the array.
     case "TOGGLE_FAV":
       if (state.favPhotos.includes(action.id)) {
         return {
@@ -30,6 +31,8 @@ const reducer = (state, action) => {
           favPhotos: [...state.favPhotos, action.id],
         };
       }
+
+    // Default state of modal is null, so if it's null, set it to the id of the photo that was clicked on to open the modal (action.id) and if it's not null, set it back to null.
     case "TOGGLE_MODAL":
       return {
         ...state,
@@ -68,7 +71,7 @@ function useApplicationData() {
 
   useEffect(() => {
     if (state.photoTopic !== null)
-      fetch(`http://localhost:8001/api/topics/photos/${state.photoTopic}`)
+      fetch(`/api/topics/photos/${state.photoTopic}`)
         .then((response) => response.json())
         .then((data) =>
           dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })

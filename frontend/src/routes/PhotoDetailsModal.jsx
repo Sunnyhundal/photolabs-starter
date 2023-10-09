@@ -13,6 +13,8 @@ const PhotoDetailsModal = (props) => {
   const { photos, showSelected, isModalVisible, favPhotos, showFavPhotos } =
     props;
   const modalPhoto = photos.filter((photo) => isModalVisible === photo.id);
+  const photo = modalPhoto[0];
+  const similarPhotosToModal = Object.values(photo.similar_photos);
 
   return (
     <div className="photo-details-modal">
@@ -23,8 +25,6 @@ const PhotoDetailsModal = (props) => {
             alt="close symbol"
             onClick={() => showSelected(null)}
           />
-
-          {console.log(modalPhoto[0])}
         </button>
       </div>
 
@@ -35,7 +35,7 @@ const PhotoDetailsModal = (props) => {
           showFavPhotos={showFavPhotos}
         />
         <img
-          src={modalPhoto[0].urls.full}
+          src={photo.urls.full}
           alt="full size"
           className="photo-details-modal__image"
         />
@@ -43,24 +43,24 @@ const PhotoDetailsModal = (props) => {
         <div className="photo-list-item__user-details">
           <div className="photo-list__user-profile">
             <img
-              src={modalPhoto[0].user.profile}
+              src={photo.user.profile}
               alt="profile"
               className="photo-list-item__profile-image"
             />
           </div>
 
           <div className="photo-list-item__user-info">
-            {modalPhoto[0].user.name}
+            {photo.user.name}
 
             <div className="photo-list-item__user-location">
-              {modalPhoto[0].location.city}, {modalPhoto[0].location.country}
+              {photo.location.city}, {photo.location.country}
             </div>
           </div>
         </div>
         <h4>Related Photos</h4>
         <PhotoList
           className="photo-details-modal__images"
-          photos={photos}
+          photos={similarPhotosToModal}
           showSelected={showSelected}
           favPhotos={favPhotos}
           showFavPhotos={showFavPhotos}

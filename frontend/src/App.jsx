@@ -5,7 +5,7 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import "./App.scss";
 
 const App = () => {
-  const { state, showFavPhotos, showSelected, photosByTopic} =
+  const { state, showFavPhotos, showSelected, photosByTopic } =
     useApplicationData();
 
   const { favPhotos, isModalVisible, photoData, topicData } = state;
