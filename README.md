@@ -1,5 +1,15 @@
-# react-photolabs
-The PhotoLabs project for the Web Development React course programming.
+# Photolabs
+The PhotoLabs project for the Web Development React course programming. The project is a basic web application that allows users to share their photos. 
+
+The project is built using ***React, Node.js, Express, and PostgreSQL***.
+
+## Features
+
+## Screenshots
+![Home Page](
+![modal view](
+![likes and Notifications](
+
 
 # Photolabs
 
