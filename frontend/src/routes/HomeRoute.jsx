@@ -13,6 +13,8 @@ const HomeRoute = (props) => {
     favPhotos,
     showFavPhotos,
     photosByTopic,
+    isNightMode,
+    handleNightModeToggle
   } = props;
 
   const isFavPhotoExist = favPhotos.length > 0;
@@ -23,6 +25,8 @@ const HomeRoute = (props) => {
         topics={topics}
         isFavPhotoExist={isFavPhotoExist}
         photosByTopic={photosByTopic}
+        isNightMode={isNightMode}
+        handleNightModeToggle={handleNightModeToggle}
       />
       <PhotoList
         photos={photos}

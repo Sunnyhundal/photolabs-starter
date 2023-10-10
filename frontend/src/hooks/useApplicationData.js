@@ -4,6 +4,7 @@ export const ACTIONS = {
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
   GET_PHOTO_BY_TOPIC: "GET_PHOTO_BY_TOPIC",
+  TOGGLE_NIGHT_MODE: "TOGGLE_NIGHT_MODE",
 };
 
 // Define the initial state for the reducer
@@ -13,6 +14,7 @@ const initialState = {
   topicData: [],
   isModalVisible: null,
   photoTopic: null,
+  isNightMode: false,
 };
 
 // Define the reducer function
@@ -44,6 +46,9 @@ const reducer = (state, action) => {
       return { ...state, topicData: action.payload };
     case "GET_PHOTO_BY_TOPIC":
       return { ...state, photoTopic: action.payload };
+    case "TOGGLE_NIGHT_MODE":
+      // Handle TOGGLE_NIGHT_MODE action
+      return { ...state, isNightMode: !state.isNightMode };
 
     default:
       return state;
@@ -88,12 +93,16 @@ function useApplicationData() {
   const photosByTopic = (topic) => {
     dispatch({ type: ACTIONS.GET_PHOTO_BY_TOPIC, payload: topic });
   };
-
+  const toggleNightMode = () => {
+    dispatch({ type: ACTIONS.TOGGLE_NIGHT_MODE });
+  };
   return {
     state,
     showFavPhotos,
     showSelected,
     photosByTopic,
+    toggleNightMode,
+    dispatch,
   };
 }
 
